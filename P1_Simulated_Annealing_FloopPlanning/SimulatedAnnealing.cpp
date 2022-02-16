@@ -85,6 +85,8 @@ int main(int argc, char** argv)
     std::chrono::minutes runTime;
     startTime = std::chrono::high_resolution_clock::now();
 
+    std::cout << "Initial random solution area: " << bestCost << "\n";    
+
     // SA loop
     do
     {
