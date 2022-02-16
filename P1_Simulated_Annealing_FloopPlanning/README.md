@@ -17,12 +17,12 @@ Tuning variables:
 Results:
 NOTE: Generated for the input_file.txt in the repo.
 
-Initial random solution view:
-Area = 500
+Initial random solution view: </br>
+Area = 500 </br>
 ![image](https://user-images.githubusercontent.com/79747613/154202488-775a5e17-f03b-4706-92a0-3461d9b28ce9.png)
 
-Final results:
-Area = 391
+Final results:</br>
+Area = 391</br>
 ![image](https://user-images.githubusercontent.com/79747613/154202898-b62b11da-d021-40f1-b814-d73aeb8913dc.png)
 
 NOTE: Fine tuning the input variables can yield better results
