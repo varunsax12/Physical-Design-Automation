@@ -56,7 +56,7 @@ std::vector<std::string> PolishExpression::get_polish_expression()
 * @param moduleList -> modules in the input file
 */
 void PolishExpression::create_random_expression()
-{   
+{
     // Logic for n modules, there will be n-1 partitions
     this->currExp.reserve(0);
     this->operandCountVec.reserve(0);
@@ -256,69 +256,72 @@ float compute_area_wrapper(std::vector<std::string>& currList,
     cirModule_t topRoom = moduleStack.top();
     float totalArea = topRoom.width * topRoom.height;
 
-    // Build the graph plotting data from the room_map
-    // to generate required data for plotting through python
-    // in matplotlib
-    
-    // Clear the past placement data if any
-    for (auto x : moduleList)
+    if (generatePlotData)
     {
-        moduleList[x.first].placement = std::make_pair(0, 0);
-    }
-    // Room related data already clear
+        // Build the graph plotting data from the room_map
+        // to generate required data for plotting through python
+        // in matplotlib
+        
+        // Clear the past placement data if any
+        for (auto x : moduleList)
+        {
+            moduleList[x.first].placement = std::make_pair(0, 0);
+        }
+        // Room related data already clear
 
-    // Re-using the moduleStack
-    while (not moduleStack.empty())
-    {
-        cirModule_t currentRoom = moduleStack.top();
-        moduleStack.pop();
-        if (currentRoom.isModule)
+        // Re-using the moduleStack
+        while (not moduleStack.empty())
         {
-            // Update the reference in moduleList
-            moduleList[currentRoom.name].placement = currentRoom.placement;
-            continue;
-        }
-        cirModule_t module1, module2;
-        // Get room1
-        if (currentRoom.isModule1mod == false)
-        {
-            // module 1 is room
-            module1 = room_map[currentRoom.module1];
-        }
-        else
-        {
-            // module 1 is module
-            module1 = moduleList[currentRoom.module1];
-        }
-        // Get room2
-        if (currentRoom.isModule2mod == false)
-        {
-            // module 2 is room
-            module2 = room_map[currentRoom.module2];
-        }
-        else
-        {
-            // module 2 is module
-            module2 = moduleList[currentRoom.module2];
-        }
-        // Module 1 is either the left or bottom irrespective of partition
-        // so, its x,y will be same as currentRoom
-        module1.placement = currentRoom.placement;
-        // Add module1 to stack
-        moduleStack.push(module1);
+            cirModule_t currentRoom = moduleStack.top();
+            moduleStack.pop();
+            if (currentRoom.isModule)
+            {
+                // Update the reference in moduleList
+                moduleList[currentRoom.name].placement = currentRoom.placement;
+                continue;
+            }
+            cirModule_t module1, module2;
+            // Get room1
+            if (currentRoom.isModule1mod == false)
+            {
+                // module 1 is room
+                module1 = room_map[currentRoom.module1];
+            }
+            else
+            {
+                // module 1 is module
+                module1 = moduleList[currentRoom.module1];
+            }
+            // Get room2
+            if (currentRoom.isModule2mod == false)
+            {
+                // module 2 is room
+                module2 = room_map[currentRoom.module2];
+            }
+            else
+            {
+                // module 2 is module
+                module2 = moduleList[currentRoom.module2];
+            }
+            // Module 1 is either the left or bottom irrespective of partition
+            // so, its x,y will be same as currentRoom
+            module1.placement = currentRoom.placement;
+            // Add module1 to stack
+            moduleStack.push(module1);
 
-        // Calculate the x,y for module1
-        if (is_horizontal_partition(currentRoom.partitionType))
-        {
-            // H_t
-            module2.placement = std::make_pair(currentRoom.placement.first, currentRoom.placement.second + module1.height);
+            // Calculate the x,y for module1
+            if (is_horizontal_partition(currentRoom.partitionType))
+            {
+                // H_t
+                module2.placement = std::make_pair(currentRoom.placement.first, currentRoom.placement.second + module1.height);
+            }
+            else // V_t
+            {
+                module2.placement = std::make_pair(currentRoom.placement.first + module1.width, currentRoom.placement.second);
+            }
+            // Add module2 to stack
+            moduleStack.push(module2);
         }
-        else // V_t
-        {
-            module2.placement = std::make_pair(currentRoom.placement.first + module1.width, currentRoom.placement.second);
-        }
-        // Add module2 to stack
-        moduleStack.push(module2);
     }
 
     return (totalArea);
