@@ -2,14 +2,30 @@
 
 Steps to run:
 1. make
-2. ./sa input_file.txt
+2. ./sa <input_file>
 3. python FP_plotter.py
+
+Input file format:
+<module_name> <area> <aspect_ratio>
 
 Tuning variables:
 1. TempScaling: cool down rate when generating bad moves (to make runs more conservative)
 2. tempConstraint: The lowest temperature to anneal till
 3. timeOut: Time out for annealing
 4. runMultiplier: iteration scaling per run
+
+Results:
+NOTE: Generated for the input_file.txt in the repo.
+
+Initial random solution view:
+Area = 500
+![image](https://user-images.githubusercontent.com/79747613/154202488-775a5e17-f03b-4706-92a0-3461d9b28ce9.png)
+
+Final results:
+Area = 391
+![image](https://user-images.githubusercontent.com/79747613/154202898-b62b11da-d021-40f1-b814-d73aeb8913dc.png)
+
+NOTE: Fine tuning the input variables can yield better results
 
 References:
 [1] https://limsk.ece.gatech.edu/course/ece6133/slides/floorplanning.pdf
