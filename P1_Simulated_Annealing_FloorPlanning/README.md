@@ -1,4 +1,8 @@
+<<<<<<< HEAD:P1_Simulated_Annealing_FloorPlanning/README.md
 # Simulated Annealing Based Floorlanning
+=======
+# Simulated Annealing Based Slicing Flooplanning
+>>>>>>> ffedaed19b44e9faff19013deaaaa77864d25c26:P1_Simulated_Annealing_FloopPlanning/README.md
 
 Steps to run:
 1. make
