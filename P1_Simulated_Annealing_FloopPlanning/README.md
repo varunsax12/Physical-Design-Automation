@@ -1,4 +1,4 @@
-# Simulated Annealing Based Flooplanning
+# Simulated Annealing Based Slicing Flooplanning
 
 Steps to run:
 1. make
