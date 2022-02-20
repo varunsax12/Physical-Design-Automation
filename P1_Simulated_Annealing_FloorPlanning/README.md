@@ -1,4 +1,4 @@
-# Simulated Annealing Based Flooplanning
+# Simulated Annealing Based Floorlanning
 
 Steps to run:
 1. make
