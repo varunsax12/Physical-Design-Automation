@@ -23,7 +23,7 @@ Area = 500 </br>
 
 Final results:</br>
 Area = 391</br>
-![image](https://user-images.githubusercontent.com/79747613/155135914-f4f25e11-2af6-4eaa-aadc-b754be2c687c.png)
+![Capture](https://user-images.githubusercontent.com/79747613/155136482-8b53258f-9ace-423f-86a9-3a60145e995d.PNG)
 
 NOTE: Fine tuning the input variables can yield better results
 
